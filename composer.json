@@ -1,0 +1,25 @@
+{
+  "name": "otifsolutions/laravel-settings",
+  "description": "This package creates a complete generic Settings Table and structure to be used in project. For Laravel.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "OTIF Solutions",
+      "email": "contact@otif-solutions.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "OTIFSolutions\\Laravel\\Settings": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "OTIFSolutions\\Laravel\\Settings\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {}
+}

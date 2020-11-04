@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "OTIFSolutions\\Laravel\\Settings": "src/"
+      "OTIFSolutions\\Laravel\\Settings\\": "src/"
     }
   },
   "extra": {

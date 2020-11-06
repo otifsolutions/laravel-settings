@@ -44,7 +44,7 @@ class Setting extends \Illuminate\Database\Eloquent\Model
      * @param $key
      * @return bool|null
      */
-    public static function delete($key){
+    public static function remove($key){
         return self::where('key',$key)->delete();
     }
 

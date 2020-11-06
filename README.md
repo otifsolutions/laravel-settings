@@ -42,6 +42,14 @@ Setting::get('KEY_GOES_HERE')
 
 If Setting does not exist the system will return null
 
+### Delete a Setting
+
+```
+Setting::remove('KEY_GOES_HERE')
+```
+
+If Setting does not exist the system will return null
+
 ### Details 
 
 This pakage is used to add generic Settings structure to the Laravel project. 

@@ -37,6 +37,16 @@ class Setting extends \Illuminate\Database\Eloquent\Model
     public static function set($key, $value, $type = 'STRING'){
         self::updateOrCreate(['key' => $key],['value' => $value,'type' => $type]);
     }
+    
+    /**
+     * Delete Setting from database by key. 
+     *
+     * @param $key
+     * @return bool|null
+     */
+    public static function delete($key){
+        return self::where('key',$key)->delete()
+    }
 
     /**
      * Internal Function to cast a particular type

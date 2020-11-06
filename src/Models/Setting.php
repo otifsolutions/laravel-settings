@@ -4,7 +4,7 @@ namespace OTIFSolutions\Laravel\Settings\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Setting extends Illuminate\Database\Eloquent\Model
+class Setting extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
 

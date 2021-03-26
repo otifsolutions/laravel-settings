@@ -3,6 +3,7 @@
 namespace OTIFSolutions\Laravel\Settings\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Crypt;
 
 class Setting extends \Illuminate\Database\Eloquent\Model
 {
@@ -19,7 +20,7 @@ class Setting extends \Illuminate\Database\Eloquent\Model
     public static function get($key){
         $item = self::where('key',$key)->first();
         if ($item)
-            return self::cast($item['value'],$item['type']);
+            return self::cast(Crypt::decryptString($item['value']),$item['type']);
         else
             return null;
     }
@@ -35,7 +36,7 @@ class Setting extends \Illuminate\Database\Eloquent\Model
      *
      */
     public static function set($key, $value, $type = 'STRING'){
-        self::updateOrCreate(['key' => $key],['value' => $value,'type' => $type]);
+        self::updateOrCreate(['key' => $key],['value' => Crypt::encryptString($value),'type' => $type]);
     }
     
     /**
@@ -58,13 +59,13 @@ class Setting extends \Illuminate\Database\Eloquent\Model
     private static function cast($val, $type){
         switch ($type){
             case 'INT':
-                return intval($val);
+                return (int)$val;
             case 'BOOL':
-                return boolval($val);
+                return (bool)$val;
             case 'JSON':
-                return json_decode($val);
+                return json_decode($val, true);
             case 'DOUBLE':
-                return floatval($val);
+                return (float)$val;
             case 'STRING':
             default:
                 return $val;
